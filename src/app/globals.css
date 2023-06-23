@@ -1,5 +1,520 @@
-.dark-mode {
-  background-color: rgb(20, 1, 20);
+:root {
+  /* violet */
+  --primary-color: 111, 76, 255;
+
+  /* white */
+  --text-color: 256, 256, 256;
+}
+
+#root {
+  background-color: #111;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+{/* Alphabetical From Here On */}
+
+.App {
+  padding: 2px;
+  min-height: 100vh;
+  margin: auto;
+  width: 98%;
+  max-height: 100vh;
+}
+
+a:visited {
+  color: rgb(229, 205, 238);
+}
+
+a {
+  color: rgb(40, 100, 178);
+  text-decoration: none;
+}
+
+.App-logo {
+  height: 20vmin;
+  pointer-events: none;
+  margin-right: 1%;
+}
+
+.App-header {
+  background-color: #100218;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
   color: #eee;
-  margin: 0px 10px;
+  border-radius: 10px;
+  border: 1px solid black;
+}
+
+.article-grid-container {
+  display: inline-grid;
+  padding: 15px;
+  background-color: #100218;
+  min-height: 100vh;
+  width: 100%;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 5%;
+  row-gap: 5%;
+  /* align-items: center;
+  justify-content: center; */
+}
+
+aside {
+  border: 1px solid rgb(174, 236, 247);
+  word-wrap: break-word;
+  display: block;
+}
+
+.byline {
+  color: #1a0033;
+  font-style: italic;
+}
+
+code {
+  background-color: #E6E6E6;
+}
+
+.collapse-panel {
+  color: #eee;
+  width: 100%;
+  text-align: center;
+  border: 1px solid #eee;;
+  border-radius: 10px;
+  position: relative;
+  background: radial-gradient(
+    circle at 50% 0,
+    rgba(86, 17, 88, 0.5),
+    rgba(197, 47, 187, 0) 70.71%
+  ), radial-gradient(
+    circle at 6.7% 75%,
+    rgba(81, 23, 79, 0.5),
+    rgba(76, 4, 74, 0) 70.71%
+  ),
+  radial-gradient(
+      circle at 93.3% 75%,
+      rgba(92, 16, 127, 0.75),
+      rgba(234, 0, 255, 0) 70.71%
+    ) rgb(6, 0, 7);
+}
+
+.collapse-img {
+  display: inline;
+}
+
+.dataframe {
+  font-size: 80%;
+  margin: auto;
+}
+
+.dir-grid {
+  display: inline-grid;
+  width: 100%;
+}
+
+.flex-container {
+  display: flex;
+  width: 20%;
+}
+
+.file-grid {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.file-grid img {
+  padding: 0px;
+}
+
+.glow:hover {
+  box-shadow: rgba(var(--primary-color), 0.5) 0px 0px 20px 0px;
+}
+
+.grid-container {
+  display: flex;
+}
+
+html, body {
+  height: 100%;
+}
+
+.home-page {
+  text-align: center;
+  background-color:rgb(233, 242, 253);
+  min-height: 100vh;
+}
+
+.hide {
+  display: none;
+}
+
+.icon {
+  max-width: 25px;
+  height: auto;
+}
+
+.white-filter {
+  -webkit-filter: brightness(0) invert(1);
+  filter: brightness(0) invert(1);
+}
+
+@-webkit-keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.links-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  padding: 10px;
+}
+
+.links-container a {
+  padding: 20px;
+}
+
+.mapped-image {
+  display: inline-block;
+  padding: 10px 0;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/*
+320px — 480px: Mobile devices
+481px — 768px: iPads, Tablets
+769px — 1024px: Small screens, laptops
+1025px — 1200px: Desktops, large screens
+1201px and more —  Extra large screens, TV
+*/
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 70%;
+  }
+  .article-grid-container {
+    padding: 5px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .icon {
+    width: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 80%;
+  }
+  .article-grid-container {
+    padding: 10px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .icon {
+    width: 20px;
+  }
+}
+
+@media (max-width: 1024px) {
+  body {
+    font-size: 90%;
+  }
+}
+
+/* The Largest */
+@media (min-width: 1201px) {
+  body {
+    font-size: 100%;
+  }
+}
+
+.modal-image {
+  width: 100%;
+  height: 100%;
+}
+
+nav {
+  text-align: center;
+  background-color: #100218;
+  border-radius: 10px;
+  border: 1px solid white;
+  width: 80%;
+  margin: auto;
+}
+
+nav a {
+  padding: 0px 10px;
+  text-decoration: none;
+  padding: 3px;
+  color: #eee;
+}
+
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 3px 3px;
+  border: none;
+  position: fixed;
+}
+
+.panel-dir-name {
+  display: inline;
+  font-weight: bold;
+  margin-left: 4px;
+}
+
+.panel-doc-list {
+  list-style-type: none;
+  text-align: left;
+  margin: 0px;
+  padding: 0px;
+}
+
+.panel-doc-list a {
+  font-weight: bold;
+}
+
+.panel-doc-prev {
+  list-style-type: none;
+  margin: 0px;
+  padding: 0px;
+  width: 50%;
+  float: right;
+}
+
+.prev-title {
+  color: rgb(108, 132, 160);
+}
+
+.prev-div {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
+.prev-div {
+  padding: 0;
+  margin: 0;
+}
+
+.prev-list ul {
+  list-style: none;
+  padding-left: 0;
+  line-height: normal;
+  margin: 0;
+  padding: 0;
+}
+
+.prev-container {
+  background-color: #f1e4f9;
+  font-size: 75%;
+  width: auto;
+  border: 5px solid rgb(108, 132, 160);
+  justify-content: center;
+}
+
+.prev-container * {
+  padding: 0;
+  margin: 0;
+}
+
+.project-container {
+  background-color: #f1e4f9;
+  width: 300px;
+  border: 15px solid rgb(108, 132, 160);
+  padding: 50px;
+  margin: 20px;
+}
+
+.project-title {
+  color: rgb(108, 132, 160);
+}
+
+.project-grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  padding: 15px;
+  align-items: center;
+  justify-content: center;
+}
+
+pre { 
+  font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", Monaco, "Courier New", Courier, monospace;
+  font-size:85%;
+  width: min-content;
+  margin-left: 3%;
+  tab-size: 4; 
+  padding: 4px;
+  border: 0.5px solid #d3d3d3;
+  border-radius: 5px;
+  background-color: #E6E6E6;
+}
+
+.route-link {
+  color: #260a2649;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border-radius: 5px;
+  color: #eee;
+}
+
+.route-link:hover {
+  transition: all 0.3s ease;
+}
+
+.route-link:visited {
+  color: rgb(214, 212, 228);
+}
+
+.side-panel-aside {
+  text-align: center;
+  background-color:rgb(237, 233, 233);
+  right: 0;
+  padding: 0 10px 0 20px;
+  top: 0px;
+  bottom: 0px;
+  position: relative;
+}
+
+.side-panel-container {
+  height: 100vh;
+  display: block;
+}
+
+.side-panel-image {
+  width: 100%;
+}
+
+.side-panel-list {
+  padding: 2px;
+  list-style-type: none;
+}
+
+.show-more {
+  cursor: pointer;
+  width: auto;
+  text-align: left;
+  display: inline-block;
+}
+
+.show-more img {
+  margin-top: 10px;
+}
+
+.subText {
+  font-size: 50%;
+}
+
+.text-glow {
+  text-shadow: 0 0 80px rgb(192 219 255 / 50%), 0 0 32px rgb(65 120 255 / 49%);
+}
+
+.text-gradient {
+  background: linear-gradient(to right, #30CFD0, #c43ad6);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-fire {
+  background: linear-gradient(to right, #db2303, #f9bb6b);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-ash {
+  background: linear-gradient(to left, #eaf3f5, #b0b0b0e6);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.toggle-button {
+  font-size: 150%;
+  font-weight: bold;
+  color: purple;
+  float: right;
+}
+
+/* Tooltip container */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltip .tooltipText {
+  visibility: hidden;
+  width: 120px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+
+  /* Position the tooltip text */
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+
+  /* Fade in tooltip */
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* Tooltip arrow */
+.tooltip .tooltipText::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltipText {
+  visibility: visible;
+  opacity: 1;
 }

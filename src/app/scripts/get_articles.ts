@@ -1,18 +1,21 @@
-import { PrismaClient } from '@prisma/client'
+import db from '../db'
+// define a schema for the users table
 
-const prisma = new PrismaClient()
 
 async function main() {
-  const articles = await prisma.article.findMany()
-  console.log(articles)
+  let users = 'what'
+  users = db.all(`
+    SELECT name FROM users WHERE id = 1;
+  `, function(err: any, rows: any) {
+      console.log(rows)
+  })
 }
 
 main()
-  .then(async () => {
-    await prisma.$disconnect()
+  .then(() => {
+    console.log(`Retrieved :)`)
   })
   .catch(async (e) => {
     console.error(e)
-    await prisma.$disconnect()
     process.exit(1)
   })

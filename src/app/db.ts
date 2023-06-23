@@ -1,13 +1,6 @@
-import { PrismaClient } from '@prisma/client'
+const sqlite3 = require('sqlite3').verbose();
 
-const globalForPrisma = global as unknown as {
-    prisma: PrismaClient | undefined
-}
+// create a new database
+const db = new sqlite3.Database('dev.sqlite');
 
-export const prisma = 
-    globalForPrisma.prisma ??
-    new PrismaClient({
-        log: ['query'],
-    })
-
-if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma
+export default db;

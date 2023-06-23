@@ -1,4 +1,4 @@
-import { prisma } from "@/app/db";
+import db from '@/app/db';
 import styles from './Button.module.css'
 import formStyles from './Form.module.css'
 
@@ -9,23 +9,11 @@ export default async function ArticleEditPage({
     params: {id: number };
 }) {
     const key = `articles:${params.id}`;
-    const article = await prisma.article.findUnique({
-        where: {
-          id: params.id,
-        },
-      });
+    const article = await db.run(`INSERT INTO`);
 
     async function upArticle(formData: FormData) {
         "use server";
-        await prisma.article.update({where: {
-                id: params.id
-            },
-            data: {
-                title: formData.get("title") as string || '',
-                category: formData.get("category") as string || '',
-                published: formData.get("publihsed") as unknown || false,
-            }
-          })
+        db.run(`INSERT INTO`)
     }
 
     return (
