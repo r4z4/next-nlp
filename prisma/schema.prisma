@@ -2,7 +2,8 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client-js"
+  provider = "prisma-client-js",
+  previewFeatures = ["nativeTypes"]
 }
 
 datasource db {
@@ -12,9 +13,12 @@ datasource db {
 
 model Article {
     id String @id @default(uuid())
-    title String
-    subDir String
+    title String @title
+    subDir String @subDir
     complete Boolean
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 }
+
+
+// id Int @id @default(autoincrement())
