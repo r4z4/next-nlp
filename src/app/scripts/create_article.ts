@@ -1,19 +1,60 @@
 import { PrismaClient } from '@prisma/client'
-import { randomUUID } from 'crypto'
 
 const prisma = new PrismaClient()
-
+//createMany cannot be used w/ SQLite
 async function main() {
-    const article = await prisma.article.create({
+    let article = await prisma.article.create({
         data: {
-            id: randomUUID(),
             title: 'Test Article One',
-            subDir: 'alice@prisma.io',
-            complete: false,
+            published: true,
             createdAt: new Date(),
             updatedAt: new Date(),
+            url: '/articles/run_01',
+            filename: 'run_01',
+            images: 'run_01.png,run_01_clean.png',
+            category: 'news',
         },
         })
+    
+    article = await prisma.article.create({
+      data: {
+          title: 'Test Article Two',
+          published: true,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          url: '/articles/run_01',
+          filename: 'run_01',
+          images: 'run_01.png,run_01_clean.png',
+          category: 'trivia',
+      },
+      })
+
+    article = await prisma.article.create({
+      data: {
+          title: 'Test Article Three',
+          published: true,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          url: '/articles/run_01',
+          filename: 'run_01',
+          images: 'run_01.png,run_01_clean.png',
+          category: 'trivia',
+      },
+      })
+
+    article = await prisma.article.create({
+      data: {
+          title: 'Test Article Four',
+          published: true,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          url: '/articles/run_01',
+          filename: 'run_01',
+          images: 'run_01.png,run_01_clean.png',
+          category: 'news',
+      },
+      })
+
         console.log(article)
 }
 
@@ -26,3 +67,4 @@ main()
     await prisma.$disconnect()
     process.exit(1)
   })
+

@@ -1,11 +1,11 @@
 import { PrismaClient } from '@prisma/client'
-import { randomUUID } from 'crypto'
 
 const prisma = new PrismaClient()
 
 async function main() {
   const articles = await prisma.article.findMany()
   console.log(articles)
+}
 
 main()
   .then(async () => {
@@ -16,4 +16,3 @@ main()
     await prisma.$disconnect()
     process.exit(1)
   })
-}

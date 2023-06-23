@@ -6,14 +6,12 @@ import formStyles from './Form.module.css'
 export default async function ArticleEditPage({
     params,
 }: {
-    params: {id: string };
+    params: {id: number };
 }) {
     const key = `articles:${params.id}`;
-    const article = await prisma.article.findMany({
+    const article = await prisma.article.findUnique({
         where: {
-          id: {
-            equals: params.id,
-          },
+          id: params.id,
         },
       });
 
@@ -24,8 +22,8 @@ export default async function ArticleEditPage({
             },
             data: {
                 title: formData.get("title") as string || '',
-                subDir: formData.get("subDir") as string || '',
-                complete: formData.get("complete") as unknown || false,
+                category: formData.get("category") as string || '',
+                published: formData.get("publihsed") as unknown || false,
             }
           })
     }
@@ -45,13 +43,10 @@ export default async function ArticleEditPage({
                         defaultValue={article?.title} 
                     />
                     <label>Image</label>
-                    <input name="title" type="text" value={article?.subDir} />
+                    <input name="title" type="text" defaultValue={article?.category} />
                     <label>Complete</label>
-                    <input name="title" type="checkbox" defaultValue={article?.complete} />
-                    <label>Image</label>
-                    <input name="title" type="text" defaultValue={article?.createdAt} />
-                    <label>Body</label>
-                    <input name="title" type="text" defaultValue={article?.updatedAt} />
+                    <input name="title" type="checkbox" checked={article?.published} />
+
                     <button className={styles.error} type="submit"> Save & Continue</button>
                     
                 </form>

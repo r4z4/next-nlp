@@ -1,21 +1,23 @@
+"use client"
 import React from 'react'
-import Router from 'next/router'
-import styles from '@/components/Post.module.css'
+import { useRouter } from 'next/navigation'
+import styles from '../components/Article.module.css'
 
 export type ArticleProps = {
-  id: string
+  id: number
   title: string
-  complete: boolean
+  published: boolean
   createdAt: Date
   updatedAt: Date
 }
 
 const Post: React.FC<{ article: ArticleProps }> = ({ article }) => {
+  const router = useRouter()
   const articleTitle = article.title ? article.title : 'Unknown author'
   return (
     <div
       className={styles.post}
-      onClick={() => Router.push('/p/[id]', `/p/${article.id}`)}
+      onClick={() => router.push('/p/[id]', `/p/${article.id}`)}
     >
       <h2>{article.title}</h2>
       <small>By {article.title}</small>

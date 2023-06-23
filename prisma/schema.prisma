@@ -2,8 +2,8 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client-js",
-  previewFeatures = ["nativeTypes"]
+  provider = "prisma-client-js"
+  previewFeatures = ["createMany"]
 }
 
 datasource db {
@@ -11,14 +11,32 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Article {
-    id String @id @default(uuid())
-    title String @title
-    subDir String @subDir
-    complete Boolean
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+model User {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  email     String   @unique
+  name      String?
+  role      Int      @default(2)
+  articles  Article[]
 }
+
+model Article {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  published Boolean  @default(false)
+  title     String   
+  category  String
+  url       String
+  filename  String
+  images    String 
+  author    User?    @relation(fields: [authorId], references: [id])
+  authorId  Int?
+}
+
+
+
+
 
 
 // id Int @id @default(autoincrement())

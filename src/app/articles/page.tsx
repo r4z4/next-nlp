@@ -1,13 +1,12 @@
 import Article, { ArticleProps } from "@/app/components/Article";
-import articleStyles from './Article.module.css'
+import homeStyles from '../components/Home.module.css'
 import { prisma } from "@/app/db";
 
-export default async function NewsArticle({
+export default async function ArticleHome({
     params,
 }: {
-    params: {id: string };
+    params: {id: number };
 }) {
-    const key = `articles:${params.id}`;
     const articles = prisma.article.findMany({
         orderBy: [
           {
@@ -17,14 +16,14 @@ export default async function NewsArticle({
       })
 
     return (
-        <div className={articleStyles.card}>
-            <div className={articleStyles.cardBody}>
+        <div className={homeStyles.card}>
+            <div className={homeStyles.cardBody}>
                 <h2>Articles</h2>
                 <div>
                     <ul>
                         {(await articles).map((article: ArticleProps) => (
                             <li>
-                                <Article article={article} />
+                                <Article article={article} /> 
                             </li>
                         ))}
                     </ul>
