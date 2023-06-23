@@ -2,7 +2,6 @@ import db from '@/app/db';
 import styles from './Button.module.css'
 import formStyles from './Form.module.css'
 
-
 export default async function ArticleEditPage({
     params,
 }: {

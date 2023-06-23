@@ -1,13 +1,36 @@
 import db from '../db'
+import ArticleProps from '../components/Article'
 // define a schema for the users table
 
+interface Article {
+  id: number
+  title: string
+  category: string
+  published: boolean
+  created_at: Date
+  updated_at: Date
+}
+
+interface ArticleRows {
+  [x: string]: any
+  rows: Article[]
+}
 
 async function main() {
-  let users = 'what'
-  users = db.all(`
-    SELECT name FROM users WHERE id = 1;
-  `, function(err: any, rows: any) {
-      console.log(rows)
+  const articles = db.all(`
+    SELECT * FROM articles;
+  `, function(err: any, rows: ArticleRows) {
+      let news: Article[] = []
+      let trivia: Article[] = []
+      rows.map((row: Article) => {
+        if (row.category == 'news') {
+          news.push(row)
+        }
+        if (row.category == 'trivia') {
+          trivia.push(row)
+        }
+      })
+      console.log(`news = ${news} and trivia = ${trivia}`)
   })
 }
 

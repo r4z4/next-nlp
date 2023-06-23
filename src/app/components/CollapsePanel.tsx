@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React from 'react'
 import FolderClosedIcon from '../assets/folder_closed.svg'
 import FolderOpenIcon from '../assets/folder_open.svg'
 import NotebookSimple from '../assets/notebook_simple.svg'
@@ -32,8 +32,8 @@ export interface PanelDocument {
 // }
 
 function CollapsePanel({ panelData }: CollapsePanelProps) {
-  const [expanded, setExpanded] = useState(false);
-  const [isShown, setIsShown] = useState<JSX.Element>(<></>);
+  const [expanded, setExpanded] = React.useState(false);
+  const [isShown, setIsShown] = React.useState<JSX.Element>(<></>);
 
   return (
     <div className="collapse-panel" style={{backgroundColor: panelData.bgColor ? panelData.bgColor : ''}}>

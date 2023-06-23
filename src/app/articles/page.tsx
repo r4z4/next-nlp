@@ -1,14 +1,32 @@
 import Article, { ArticleProps } from "@/app/components/Article";
 import homeStyles from '../components/Home.module.css'
 import db from '@/app/db';
+import CollapsePanel from "../components/CollapsePanel";
+import { getArticles } from './actions'
+
+interface CategoryProps {
+    articles: ArticleProps[]
+}
+
+function getPanelData(category: CategoryProps) {
+    return {
+        name: "Test Run",
+        date: "05/30/2020",
+        desc: "Test Desc",
+        img: '',
+        bgColor: "#FFFFFF",
+        category: "trivia",
+        documents: []
+    }
+}
 
 export default async function ArticleHome({
     params,
 }: {
     params: {id: number };
 }) {
-    const articles = await db.run(`INSERT INTO`);
-    const grouped = await db.run(`INSERT INTO`);
+
+    const grouped = await getArticles()
 
     return (
         <div className={homeStyles.card}>
@@ -16,26 +34,10 @@ export default async function ArticleHome({
                 <h2>Articles</h2>
                 <div>
                     <ul>
-                        {(await articles).map((article: ArticleProps) => (
+                        {grouped.map((category: CategoryProps) => (
                             <li>
-                                <Article article={article} /> 
+                                <CollapsePanel panelData={getPanelData(category)} /> 
                             </li>
-                        ))}
-                    </ul>
-                </div>
-            </div>
-            <div className={homeStyles.cardBody}>
-                <h2>Articles Grouped</h2>
-                <div>
-                    <ul>
-                        {(await grouped).map((group: any) => (
-                            <ul>
-                                {group.map((item: any) => (
-                                    <li>
-                                        {JSON.stringify(item)}
-                                    </li>
-                                ))} 
-                            </ul>
                         ))}
                     </ul>
                 </div>
