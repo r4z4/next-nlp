@@ -26,7 +26,7 @@ export default async function ArticleHome({
     params: {id: number };
 }) {
 
-    const grouped = await getArticles()
+    const grouped = [{articles: [{id: 1, category: 'news', title: 'gg', published: false, createdAt: '', updatedAt: ''}]},{articles: []}]
 
     return (
         <div className={homeStyles.card}>

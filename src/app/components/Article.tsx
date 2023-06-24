@@ -7,8 +7,8 @@ export type ArticleProps = {
   id: number
   title: string
   published: boolean
-  createdAt: Date
-  updatedAt: Date
+  createdAt: string
+  updatedAt: string
 }
 
 const Post: React.FC<{ article: ArticleProps }> = ({ article }) => {
