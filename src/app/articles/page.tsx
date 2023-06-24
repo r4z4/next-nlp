@@ -70,24 +70,43 @@ export default async function ArticleHome({
     let data: any;
     let newsData: any;
     let triviaData: any;
+    let gloveData: any;
+    let trecData: any;
+    let tmData: any;
 
     getData(function(q) {
         let news: Article[] = []
         let trivia: Article[] = []
-
+        let trec: Article[] = []
+        let glove: Article[] = []
+        let tm: Article[] = []
         console.log(`Rows => ${JSON.stringify((q))}`)
 
         q.map((row: Article) => {
-            if (row.category == 'news') {
-            news.push(row)
-            }
-            if (row.category == 'trivia') {
-            trivia.push(row)
+            switch (row.category) {
+                case 'news':
+                    news.push(row)
+                    break;
+                case 'trivia':
+                    trivia.push(row)
+                    break;
+                case 'glove':
+                    glove.push(row)
+                    break;
+                case 'topic-modeling':
+                    tm.push(row)
+                    break;
+                case 'trec':
+                    trec.push(row)
+                    break;
             }
         })
 
         newsData = news
         triviaData = trivia
+        trecData = trec
+        tmData = tm
+        gloveData = glove
     });
 
     console.log(`Data ==== ${JSON.stringify(newsData)}`)
@@ -114,7 +133,11 @@ export default async function ArticleHome({
                     <p>{JSON.stringify(newsData)}</p>
                     <CollapseData data={[
                         {name: 'news', articles: newsData}, 
-                        {name: 'trivia', articles: triviaData}]}
+                        {name: 'trivia', articles: triviaData},
+                        {name: 'glove', articles: gloveData},
+                        {name: 'trec', articles: trecData},
+                        {name: 'tm', articles: tmData}
+                    ]}
                     />
                 </div>
             </div>

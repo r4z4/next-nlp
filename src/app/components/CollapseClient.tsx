@@ -1,5 +1,6 @@
 "use client"
 import React from 'react'
+import Image from "next/image";
 import FolderClosedIcon from '../assets/folder_closed.svg'
 import FolderOpenIcon from '../assets/folder_open.svg'
 import NotebookSimple from '../assets/notebook_simple.svg'
@@ -40,7 +41,7 @@ function CollapseClient({ panelData }: CollapsePanelProps) {
       <>
       <span className="show-more" onClick={() => setExpanded(!expanded)}>
         <div className="collapse-img">
-          {expanded ? <img width={'35px'} className="white-filter" src={FolderOpenIcon} alt='folderClosedIcon'/> : <img width={'35px'} className="white-filter" src={FolderClosedIcon} alt='folderOpenIcon'/>}
+          {expanded ? <Image width={35} className="white-filter" src={FolderOpenIcon} alt='folderClosedIcon'/> : <Image width={35} className="white-filter" src={FolderClosedIcon} alt='folderOpenIcon'/>}
         </div>
         <p className='panel-dir-name'>{panelData.name}</p>
       </span>
@@ -57,7 +58,7 @@ function CollapseClient({ panelData }: CollapsePanelProps) {
                     key={doc.id}
                     onMouseEnter={() => setIsShown(doc.previewComponent)}
                     onMouseLeave={() => setIsShown(<></>)}>
-                      <a className="text-gradient-ash" href={doc.url}><img className="icon white-filter" src={NotebookSimple} alt='notebookSimpleIcon'/>{doc.filename}</a>
+                      <a className="text-gradient-ash" href={doc.url}><Image className="icon white-filter" src={NotebookSimple} alt='notebookSimpleIcon'/>{doc.filename}</a>
                   </li>
                 </div>
               </ul>

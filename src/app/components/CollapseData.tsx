@@ -57,6 +57,18 @@ function getPanelData(category: CategoryProps) {
       documents: []
     }
   }
+
+  else {
+    return {
+      name: "Default Panel",
+      date: "01/01/1900",
+      desc: "Default Desc",
+      img: '',
+      bgColor: "#FFFFFF",
+      category: "default",
+      documents: []
+    }
+  }
 }
 
 
