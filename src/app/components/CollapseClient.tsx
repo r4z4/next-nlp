@@ -46,6 +46,7 @@ function CollapseClient({ panelData }: CollapsePanelProps) {
       </span>
         <p>Last Updated: {panelData.date}</p>
         <p>{panelData.desc}</p>
+        <p>Category = {panelData.category}</p>
       {expanded ? (
         <div className="expandable">
           {panelData.documents.map((doc: PanelDocument) => (

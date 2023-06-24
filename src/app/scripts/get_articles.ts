@@ -30,7 +30,7 @@ async function main() {
           trivia.push(row)
         }
       })
-      console.log(`news = ${news} and trivia = ${trivia}`)
+      console.log(`news = ${JSON.stringify(news)} and trivia = ${JSON.stringify(trivia)}`)
   })
 }
 
