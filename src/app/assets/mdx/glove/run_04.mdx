@@ -1,3 +1,7 @@
+import ArticleImage from '../../article_images/glove/run_04.png'
+import Image from "next/image"
+
+
 # GloVe Run 04
 
 ---
@@ -68,6 +72,8 @@ encoder = preprocessing.LabelEncoder()
 y = encoder.fit_transform(df['newsgroup'])
 ```
 
+<Image src={ArticleImage} width={35} />
+
 
 ```python
 X_train, X_test, y_train, y_test = train_test_split(X, y,
@@ -84,7 +90,7 @@ len(X_train), len(X_test), classes, mapping
     (6359,
      2120,
      array([0, 1, 2, 3, 4, 5, 6]),
-     {0: 'sport',
+     \{0: 'sport',
       1: 'autos',
       2: 'religion',
       3: 'comp_elec',
@@ -203,7 +209,7 @@ model.weights[0][1][:10], word_embeddings[1][:10]
 ```
 
 
-    (<tf.Tensor: shape=(10,), dtype=float32, numpy=
+    (\<tf.Tensor: shape=(10,), dtype=float32, numpy=
      array([ 0.15272 ,  0.36181 , -0.22168 ,  0.066051,  0.13029 ,  0.37075 ,
             -0.75874 , -0.44722 ,  0.22563 ,  0.10208 ], dtype=float32)>,
      array([ 0.15272   ,  0.36181   , -0.22168   ,  0.066051  ,  0.13029   ,
@@ -231,8 +237,6 @@ model.fit(X_train_vect, y_train, batch_size=32, epochs=8, validation_data=(X_tes
     Epoch 8/8
     199/199 [==============================] - 1s 6ms/step - loss: 0.0497 - accuracy: 0.9904 - val_loss: 1.0631 - val_accuracy: 0.7726
 
-
-    <keras.callbacks.History at 0x7f3cbd595130>
 
 
 ```python
@@ -338,7 +342,7 @@ print(doc_array)
 ```python
 print(doc_array_vect)
 ```
-
+<div className="red">
     [[   2   53 3716    2 1299    0    0    0    0    0    0    0    0    0
          0    0    0    0    0    0    0    0    0    0    0    0    0    0
          0    0    0    0    0    0    0    0    0    0    0    0    0    0
@@ -359,13 +363,54 @@ print(doc_array_vect)
          0    0    0    0    0    0    0    0    0    0    0    0    0    0
          0    0    0    0    0    0    0    0    0    0    0    0    0    0
          0    0    0    0    0    0    0    0]]
-
+</div>
 
 ```python
 print(cstm_test_preds)
 ```
 
     [2 1 6 1 1]
+
+
+    <div>
+        <style scoped>.dataframe tbody tr th:only-of-type\{vertical-align:middle}.dataframe tbody tr th\{vertical-align:top}.dataframe thead th\{text-align:right}</style>
+        <table border='1' className='dataframe'>
+        <thead>
+        <tr style={{textAlign: 'right'}}>
+            <th></th>
+            <th>newsgroup</th>
+            <th>subject</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th>0</th>
+            <td>autos</td>
+            <td>saturn's pricing policy</td>
+        </tr>
+        <tr>
+            <th>10</th>
+            <td>autos</td>
+            <td>are bmw's worth the price</td>
+        </tr>
+        <tr>
+            <th>12</th>
+            <td>autos</td>
+            <td>re headlights problem</td>
+        </tr>
+        <tr>
+            <th>14</th>
+            <td>autos</td>
+            <td>left turn signal won't stop automaticaly</td>
+        </tr>
+        <tr>
+            <th>16</th>
+            <td>autos</td>
+            <td>what is volvo</td>
+        </tr>
+        </tbody>
+        </table>
+    </div>
 
 
 

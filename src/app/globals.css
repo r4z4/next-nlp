@@ -9,6 +9,9 @@
 #root {
   background-color: #111;
 }
+.red {
+  color: red
+}
 
 body {
   margin: 0;
