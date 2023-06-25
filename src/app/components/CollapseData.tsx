@@ -24,18 +24,19 @@ export interface PanelData {
     img?: string;
     bgColor?: string;
     category: String;
-    documents: PanelDocument[];
+    documents: ArticleProps[];
 }
 
-export interface PanelDocument {
-    id: number;
-    filename: String;
-    url: string;
-    previewComponent: JSX.Element;
-}
+// export interface PanelDocument {
+//     id: number;
+//     filename: String;
+//     url: string;
+//     previewComponent: JSX.Element;
+// }
 
 function getPanelData(category: CategoryProps) {
-  if (category.name == 'trivia') {
+  switch(category.name) {
+    case 'trivia':
     return {
         name: "Test Run Trivia",
         date: "05/30/2020",
@@ -43,10 +44,9 @@ function getPanelData(category: CategoryProps) {
         img: '',
         bgColor: "#FFFFFF",
         category: "trivia",
-        documents: []
+        documents: category.articles
     }
-  }
-  if (category.name == 'news') {
+    case 'news':
     return {
       name: "Test Run News",
       date: "05/30/2020",
@@ -54,20 +54,48 @@ function getPanelData(category: CategoryProps) {
       img: '',
       bgColor: "#FFFFFF",
       category: "news",
-      documents: []
+      documents: category.articles
     }
-  }
-
-  else {
+    case 'tm':
     return {
-      name: "Default Panel",
-      date: "01/01/1900",
-      desc: "Default Desc",
+      name: "Test Run News",
+      date: "05/30/2020",
+      desc: "Test Desc",
+      img: '',
+      bgColor: "#EEEEE",
+      category: "topic-modeling",
+      documents: category.articles
+    }
+    case 'trec':
+    return {
+      name: "Test Run News",
+      date: "05/30/2020",
+      desc: "Test Desc",
       img: '',
       bgColor: "#FFFFFF",
-      category: "default",
-      documents: []
+      category: "trec",
+      documents: category.articles
     }
+    case 'glove':
+    return {
+      name: "Test Run News",
+      date: "05/30/2020",
+      desc: "Test Desc",
+      img: '',
+      bgColor: "#FFFFFF",
+      category: "glove",
+      documents: category.articles
+    }
+    default:
+      return {
+        name: "Test Run News",
+        date: "05/30/2020",
+        desc: "Test Desc",
+        img: '',
+        bgColor: "#FFFFFF",
+        category: "news",
+        documents: []
+      }
   }
 }
 
@@ -79,7 +107,7 @@ function getPanelData(category: CategoryProps) {
 //     documents = ['Doc1', 'Doc2', 'Doc3']
 // }
 
-function CollapseClient({ data }: any) {
+function CollapseData({ data }: any) {
   const [expanded, setExpanded] = React.useState(false);
   const [isShown, setIsShown] = React.useState<JSX.Element>(<></>);
 
@@ -101,4 +129,4 @@ function CollapseClient({ data }: any) {
   );
 }
 
-export default CollapseClient;
+export default CollapseData;

@@ -6,7 +6,9 @@ import styles from '../components/Article.module.css'
 export type ArticleProps = {
   id: number
   title: string
+  filename: string
   published: boolean
+  url: string
   createdAt: string
   updatedAt: string
 }

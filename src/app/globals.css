@@ -10,7 +10,7 @@
   background-color: #111;
 }
 .red {
-  color: red
+  color: red;
 }
 
 body {
@@ -27,7 +27,7 @@ code {
     monospace;
 }
 
-{/* Alphabetical From Here On */}
+/* Alphabetical From Here On */
 
 .App {
   padding: 2px;
