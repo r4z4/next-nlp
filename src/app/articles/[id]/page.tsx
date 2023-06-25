@@ -1,33 +1,32 @@
-import MdArticle, { MdArticleProps } from "@/app/components/MdArticle";
-import homeStyles from '../components/Home.module.css'
-import db from '@/app/db';
+"use client"
+import Mdx from '../../assets/md/glove/run_04.mdx'
+import {Glove_01, Glove_02, Glove_03, Glove_04} from '../../assets/mdx/glove/'
+import ArticleImage from '../assets/article_images/glove/run_04.png'
 
-interface ArticleQueryRow {
-    id: number
-    title: string
-    category: string
+type MapType = { 
+    [id: string]: string; 
 }
 
-export default async function Article({
+export default async function MdxArticle({
     params,
 }: {
     params: {id: number };
 }) {
-    const article = await db.all(`SELECT title, category FROM articles WHERE id = ?`, params.id, function(err: any, row: ArticleQueryRow) {
-        if (err) {
-            throw err;
-          }
-        return row;
-    }); 
-    const grouped = await db.run(`INSERT INTO`);
-
+    console.log(`id=${params.id}`)
+    function getMdx(id: number) {
+        if (id == 1) {
+            return <Glove_03 />
+        } else if (id == 2) {
+            return <Glove_04 />
+        } else {
+            return <Glove_04 />
+        }
+    }
+    const mdx = () => getMdx(params.id)
     return (
-        <div className={homeStyles.card}>
-            <div className={homeStyles.cardBody}>
-                <div>
-                    <MdArticle title={article.title} category={article.category} /> 
-                </div>
-            </div>
+        <div>
+            <p>Hey</p>
+            {getMdx(params.id)}
         </div>
     )
 }

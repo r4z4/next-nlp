@@ -59,7 +59,7 @@ function CollapsePanel({ panelData }: CollapsePanelProps) {
                     key={doc.id}>
                     {/* onMouseEnter={() => setIsShown(doc.previewComponent)} onMouseLeave={() => setIsShown(<></>)}> */}
                     
-                      <a className="text-gradient-ash" href={doc.url}><Image className="icon white-filter" src={NotebookSimple} alt='notebookSimpleIcon'/>{doc.filename}</a>
+                      <a className="text-gradient-ash" href={`/articles/${doc.id}`}><Image className="icon white-filter" src={NotebookSimple} alt='notebookSimpleIcon'/>{doc.filename}</a>
                   </li>
                 </div>
               </ul>
